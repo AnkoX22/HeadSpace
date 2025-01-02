@@ -1,0 +1,15 @@
+.method-label{
+    display: block;
+ /*   justify-content: initial ; */
+    padding: 20px;
+    margin: 10px;
+}
+.session-name{
+    font-size: larger;
+    font-weight: 300;
+}
+
+.technique-name {
+    font-size: medium;
+}
+

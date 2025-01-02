@@ -1,0 +1,28 @@
+.main {
+    display: grid;
+    place-content: center;
+    justify-content: center;
+}
+.methodTitle{
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: large;
+    justify-content: center;
+}
+.methodDetails{
+    font-family: sans-serif;
+    font-size: medium;
+    justify-content: center;
+}
+.contentTitle{
+    font-weight: bold;
+    font-size: larger;
+    justify-content: center;
+    display: flex;
+}
+.divClass {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+}

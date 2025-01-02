@@ -1,0 +1,74 @@
+.method-label{
+    display: block;
+    /*   justify-content: initial ; */
+    padding: 20px;
+    margin: 10px;
+}
+.session-name{
+    font-size: larger;
+    font-weight: 300;
+}
+
+.technique-name {
+    font-size: medium;
+}
+
+.clock-section{
+    background-color: #ffffff;
+    width: 100vh;
+    display: block;
+    justify-content: center;
+    margin: auto;
+    border-radius: 5vh;
+    margin-bottom: 10vh;
+}
+
+.clock-setting{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+.timer-button{
+    border: 1px solid;
+    background-color: #E3BAC6;
+    border-radius: 3vh;
+    height: 7vh;
+    width: 12vh;
+    margin: 3vh;
+}
+
+.counter-button{
+    border: 1px solid;
+    background-color: #fdd3d0 ;
+    border-radius: 3vh;
+    height: 7vh;
+    width: 12vh;
+    margin: 3vh;
+}
+
+.topic-section {
+    display: block;
+}
+
+.topic-text{
+    display: block;
+    justify-content: center;
+    margin: 5vh;
+    margin-left: 20vh;
+}
+
+.main-section{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.add-topic{
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    margin:auto;
+    width: 5vh;
+    height: 4vh;
+    border-radius: 3vh;
+}
