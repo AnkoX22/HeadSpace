@@ -1,0 +1,37 @@
+.main-section{
+    display: flex;
+    justify-content: space-evenly ;
+    margin: auto;
+}
+
+.left-section{
+    display: grid;
+    justify-content: left;
+}
+
+.questions-section{
+    display: grid;
+    justify-content: left;
+    margin: 1vh;
+}
+
+.question-label{
+    justify-content: center ;
+    margin: 1vh;
+}
+
+.textarea-space{
+    width: 500px;
+    height: 50px;
+}
+
+.history-section{
+    display: grid;
+    justify-content: right;
+    margin: 2vh;
+}
+
+.history{
+    width: 400px;
+    height: 500px;
+}

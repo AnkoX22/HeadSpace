@@ -9,8 +9,8 @@ export default function Clock() {
             </div>
 
             <div className={"timer-buttons"}>
-                <button className={"start-button"}>Start</button>
-                <button className={"pause-button"}>Pause</button>
+                <button className={"button start-button"}>Start</button>
+                <button className={"button pause-button"}>Pause</button>
             </div>
         </>
             )}

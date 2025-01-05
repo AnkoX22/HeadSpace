@@ -1,10 +1,11 @@
 .navBar {
-    background-color: #E3BAC6;
+    background-color: var(--primary);
     justify-content: space-evenly;
     display: flex;
     margin-bottom: 20px;
     position: relative;
     width: 100%;
+    color: var(--secondary);
 }
 .listItem{
     justify-content: center;

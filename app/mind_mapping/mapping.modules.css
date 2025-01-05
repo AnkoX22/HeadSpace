@@ -1,0 +1,87 @@
+.tool-box {
+    background-color: var(--background);
+    display: block;
+    justify-content: left;
+    margin: 2vh;
+    border-radius: 13%;
+    border: 3px solid #b65c5c;
+    width: fit-content;
+    height: fit-content;
+    padding: 2vh;
+}
+
+.tool-box div {
+    margin: 2vh;
+    justify-content: center;
+    display: flex;
+}
+.circle-option{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--primary);
+}
+.rectangle-option{
+    height: 60px;
+    width: 60px;
+    border: 2px solid var(--primary);
+}
+.eclipse-option{
+    border-radius: 55%;
+    height:30px;
+    width: 60px;
+    border: 2px solid var(--primary);
+}
+.text-option{
+    margin: auto;
+    border: 2px solid var(--primary);
+}
+
+.tool-box h1 {
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+.triangle-option{
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 60px solid var(--primary);
+    margin: 2rem;
+}
+
+.diamond-option{
+
+}
+.image-option{
+    border: 2px solid var(--primary);
+}
+.simple-link{
+    height: 0;
+    width: 60px;
+    border: 2px solid var(--primary);
+}
+.double-link{
+    width:60px;
+    height: 7px;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom: 2px solid var(--primary);
+    border-top: 2px solid var(--primary);
+}
+
+.graph-space{
+    background-color: var(--background);
+    border: 3px solid #b65c5c;
+    display: inline-flex;
+    justify-content: right;
+    margin: 2vh;
+    height: 800px;
+    width: 1500px;
+}
+
+.main-space{
+    display: flex;
+}

@@ -15,14 +15,14 @@ export default function Interleaving() {
                     <textarea className={"topic-text"} placeholder={"Topic 1"}></textarea>
                     <textarea className={"topic-text"} placeholder={"Topic 2"}></textarea>
                     <textarea className={"topic-text"} placeholder={"Topic 3"}></textarea>
-                    <button className={"add-topic"}>+</button>
+                    <button className={"button add-topic"}>+</button>
                 </div>
 
                 <div className={"clock-section"}>
 
                     <div className={"clock-setting"}>
-                        <button className={"timer-button"}>Timer</button>
-                        <button className={"counter-button"}>Counter</button>
+                        <button className={"button timer-button"}>Timer</button>
+                        <button className={"button counter-button"}>Counter</button>
                     </div>
 
                     <Clock/>

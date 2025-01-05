@@ -1,0 +1,34 @@
+.main-section{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    margin: auto;
+}
+
+.button-group{
+    display: flex;
+}
+
+.main-title{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.log-in-options {
+    display: grid;
+}
+
+
+.link{
+    font-size: small;
+    text-decoration: underline;
+    margin: 0;
+}
+
+.link-group{
+    display: grid;
+}
