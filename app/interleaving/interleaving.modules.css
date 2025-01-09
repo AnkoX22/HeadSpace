@@ -40,6 +40,7 @@
     justify-content: center;
     margin: 5vh;
     margin-left: 20vh;
+    box-shadow: 0 8px 16px rgba(0,0,0, 0.2), 0 6px 20px rgba(0,0,0,0.19);
 }
 
 .main-section{
@@ -52,6 +53,7 @@
     background-color: var(--primary);
     display: flex;
     justify-content: center;
+    text-align: center;
     margin:auto;
     width: 5vh;
     height: 4vh;

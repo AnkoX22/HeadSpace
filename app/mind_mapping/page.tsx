@@ -1,5 +1,7 @@
 import React from "react";
 import "./mapping.modules.css";
+// import { GraphManager } from './GraphManager'
+
 // import MindMapClient from "@/app/mind_mapping/components/mindMap";
 
 const MindMapPage: React.FC = () => {

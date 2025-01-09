@@ -1,14 +1,64 @@
 .navBar {
     background-color: var(--primary);
-    justify-content: space-evenly;
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 1vh;
     position: relative;
-    width: 100%;
+    width: 100vw;
     color: var(--secondary);
 }
 .listItem{
     justify-content: center;
-    padding: 10px;
-    margin: 10px;
+    padding: 1vh;
+    margin: 1vw;
+}
+
+.secondNav{
+    display: flex;
+    justify-content: space-evenly;
+}
+.components li{
+    justify-content: right;
+    display: grid;
+}
+
+.menu{
+    background-color: var(--primary);
+    color: var(--background);
+    width: 5vw;
+    height: 5vh;
+    display: none;
+    justify-content: flex-start;
+    padding: 0;
+    margin-left: 0;
+}
+
+@media  screen and (max-width: 560px) {
+    .secondNav{
+        display: none;
+    }
+    .menu{
+        display: block;
+    }
+}
+.menu:active{
+    .secondNav{
+        display: table-column;
+    }
+}
+
+.showmenu{
+    display: block;
+}
+
+.click{
+    padding: 16px;
+    background-color: #ccc;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 18px;
+    color: #fff;
+    &:hover{
+        transition:0.3s;
+        background-color: #222;
+    }
 }

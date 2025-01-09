@@ -45,4 +45,9 @@ body {
   padding: 1vh;
   margin: 1vh;
   margin-left: 5vh;
+  box-shadow: 0 8px 16px rgba(0,0,0, 0.2), 0 6px 20px rgba(0,0,0,0.19);
+}
+
+.button:hover {
+
 }
