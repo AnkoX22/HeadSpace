@@ -69,13 +69,66 @@ export class MindMapGraph {
                     text: label,
                     fill: '#2C3E50',
                     fontSize: 14,
-                    fontFamily: 'Arial, sans-serif'
+                    fontFamily: 'Arial, sans-serif',
+                    magnet: true
                 }
             }
         });
         circle.addTo(this.graph);
         this.addTools(paper, circle);
         return circle;
+    }
+
+    addEllipse(x: number, y: number, width: number, height: number, label: string, paper: dia.Paper){
+        const ellipse = new shapes.standard.Ellipse({
+            position: { x, y },
+            size: { width, height },
+            attrs: {
+                body: {
+                    fill: 'white',
+                    stroke: '#2C3E50',
+                    strokeWidth: 2
+                },
+                label: {
+                    text: label,
+                    fill: '#2C3E50',
+                    fontSize: 14,
+                    fontFamily: 'Arial, sans-serif',
+                    magnet: true
+                }
+            }
+        });
+
+
+        ellipse.addTo(this.graph);
+        this.addTools(paper, ellipse);
+        return ellipse;
+    }
+
+    addCylinder(x: number, y: number, width: number, height: number, label: string, paper: dia.Paper){
+        const cylinder = new shapes.standard.Cylinder({
+            position: { x, y },
+            size: { width, height },
+            attrs: {
+                body: {
+                    fill: 'white',
+                    stroke: '#2C3E50',
+                    strokeWidth: 2
+                },
+                label: {
+                    text: label,
+                    fill: '#2C3E50',
+                    fontSize: 14,
+                    fontFamily: 'Arial, sans-serif',
+                    magnet: true
+                }
+            }
+        });
+
+
+        cylinder.addTo(this.graph);
+        this.addTools(paper, cylinder);
+        return cylinder;
     }
 
     addRectangle(x: number, y: number, width: number, height: number, label: string, paper: dia.Paper) {
@@ -94,7 +147,8 @@ export class MindMapGraph {
                     text: label,
                     fill: '#2C3E50',
                     fontSize: 14,
-                    fontFamily: 'Arial, sans-serif'
+                    fontFamily: 'Arial, sans-serif',
+                    magnet: true
                 }
             }
         });
@@ -119,13 +173,119 @@ export class MindMapGraph {
                     fill: '#2C3E50',
                     fontSize: 14,
                     fontFamily: 'Arial, sans-serif',
-                    refY: '80%'
+                    refY: '80%',
+                    magnet: true
                 }
             }
         });
         triangle.addTo(this.graph);
         this.addTools(paper, triangle);
         return triangle;
+    }
+
+    addStandardShape(x:number, y: number, width: number, height: number,label: string, paper: dia.Paper, shape: string){
+
+        let element = new shapes.standard.Rectangle();
+
+        switch(shape) {
+
+            case 'rectangle':
+                element =  new shapes.standard.Rectangle({
+                    position: { x, y },
+                    size: { width, height },
+                    attrs: {
+                        body: {
+                            fill: 'white',
+                            stroke: '#2C3E50',
+                            strokeWidth: 2,
+                            rx: 5,
+                            ry: 5
+                        },
+                        label: {
+                            text: label,
+                            fill: '#2C3E50',
+                            fontSize: 14,
+                            fontFamily: 'Arial, sans-serif',
+                            magnet: true
+                        }
+                    }
+                });
+                break;
+            case 'circle':
+                element = new shapes.standard.Circle({
+                    position: { x, y },
+                    size: { width, height },
+                    attrs: {
+                        body: {
+                            fill: 'white',
+                            stroke: '#2C3E50',
+                            strokeWidth: 2
+                        },
+                        label: {
+                            text: label,
+                            fill: '#2C3E50',
+                            fontSize: 14,
+                            fontFamily: 'Arial, sans-serif',
+                            magnet: true
+                        }
+                    }
+                });
+                break;
+            case 'triangle':
+                element = new shapes.standard.Polygon({
+                    position: { x, y },
+                    size: { width, height },
+                    attrs: {
+                        body: {
+                            fill: 'white',
+                            stroke: '#2C3E50',
+                            strokeWidth: 2,
+                            points: '0,100 50,0 100,100'
+                        },
+                        label: {
+                            text: label,
+                            fill: '#2C3E50',
+                            fontSize: 14,
+                            fontFamily: 'Arial, sans-serif',
+                            refY: '80%',
+                            magnet: true
+                        }
+                    }
+                });
+                break;
+        }
+
+        element.addTo(this.graph);
+        this.addTools(paper,element);
+
+        return element;
+    }
+
+    addImage(x: number, y: number, width: number, height: number){
+        const image = new shapes.standard.Image();
+        image.position(x,y);
+        image.resize(width,height);
+        image.attr('root/title', 'shapes.standard.Image');
+        image.attr('label/text', 'Image');
+        image.attr('image/xlinkHref', 'image.png');
+
+        image.addTo(this.graph);
+
+        return image;
+    }
+
+    addText(x: number, y: number, width: number, height: number){
+        const text = new shapes.standard.TextBlock();
+        text.resize(width, height);
+        text.position(x,y);
+        text.attr('root/title', 'shapes.standard.TextBlock');
+        text.attr('body/fill', 'pink');
+        text.attr('label/text', 'Text Example');
+        text.attr('label/style/color', 'charcoal');
+
+        text.addTo(this.graph);
+
+        return text;
     }
 
     addLink(source: dia.Element, target: dia.Element, paper: dia.Paper) {
@@ -173,12 +333,16 @@ export class MindMapGraph {
             tools: [
                 new elementTools.Remove({
                     offset: { x: 0, y: 0 },
+                    focusOpacity: 0.5,
                     action: () => {
                         element.remove();
-                    }
+                    },
+                    scale: 1,
                 }),
                 new elementTools.Boundary({
                     padding: 5,
+                    rotate: true,
+                    useModelGeometry: true,
                     attributes: {
                         fill: 'none',
                         stroke: '#2C3E50',
@@ -187,6 +351,7 @@ export class MindMapGraph {
                     }
                 }),
                 new elementTools.Connect({
+                    offset: {x: 50, y: 50},
                     targetAttribute: 'class'
                 }),
             ]
@@ -195,7 +360,13 @@ export class MindMapGraph {
         const elementView = element.findView(paper);
         if (elementView) {
             elementView.addTools(toolsView);
-            elementView.hideTools();
+            paper.on('element:mouseenter', (elementView) => {
+                elementView.showTools();
+            });
+
+            paper.on('element:mouseleave', (elementView) => {
+                elementView.hideTools();
+            });
         }
     }
 
@@ -214,6 +385,7 @@ export class MindMapGraph {
                         stroke: '#2C3E50',
                         'stroke-width': 1,
                         'stroke-dasharray': '5,5'
+
                     }
                 })
             ]

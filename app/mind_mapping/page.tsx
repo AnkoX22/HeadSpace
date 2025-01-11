@@ -5,6 +5,7 @@ import "./mapping.modules.css";
 import { MindMapGraph } from './components/graphSpace';
 import { dia } from "jointjs";
 
+
 const MindMapPage: React.FC = () => {
     const graphContainerRef = useRef<HTMLDivElement>(null);
     const mindGraphMapRef = useRef<MindMapGraph | null>(null);
@@ -67,6 +68,18 @@ const MindMapPage: React.FC = () => {
             case 'triangle':
                 mindMapGraph.addTriangle(centerX, centerY, 100, 50, "New Triangle", paper);
                 break;
+            case 'ellipse':
+                mindMapGraph.addEllipse(centerX, centerY, 100, 50, "New Ellipse", paper);
+                break;
+            case 'cylinder':
+                mindMapGraph.addCylinder(centerX, centerY, 100, 50, "New Cylinder", paper);
+                break;
+            case 'text':
+                mindMapGraph.addText(centerX, centerY, 50, 50);
+                break;
+            case 'image':
+                mindMapGraph.addImage(centerX, centerY, 100, 50);
+                break;
             // Add more shape types as needed
         }
     };
@@ -82,30 +95,46 @@ const MindMapPage: React.FC = () => {
                 <aside className="tool-box">
                     <h1>Tool Box</h1>
                     <button
-                        className="circle-option"
+                        className="draggable circle-option"
                         onClick={() => handleShapeAdd('circle')}
                         aria-label="Add Circle"
                     />
                     <button
-                        className="rectangle-option"
+                        className="draggable rectangle-option"
                         onClick={() => handleShapeAdd('rectangle')}
                         aria-label="Add Rectangle"
                     />
                     <button
-                        className="triangle-option"
+                        className="dragable triangle-option"
                         onClick={() => handleShapeAdd('triangle')}
                         aria-label="Add Triangle"
                     />
                     <button
-                        className="image-option"
-                        onClick={() => console.log('Image feature coming soon')}
+                        className="dragabble ellipse-option"
+                        onClick={() => handleShapeAdd('ellipse')}
+                        aria-label="Add Ellipse"
+                    />
+                    <button
+                        className="draggable cylinder-option"
+                        onClick={() => handleShapeAdd('cylinder')}
+                        aria-label="Add Cylinder"
+                    >
+                        <div className="tank">
+                            <div className="bottom"></div>
+                            <div className="middle"></div>
+                            <div className="top"></div>
+                        </div>
+                    </button>
+                    <button
+                        className="draggable image-option"
+                        onClick={() => handleShapeAdd('image')}
                         aria-label="Add Image"
                     >
                         <h3>img</h3>
                     </button>
                     <button
-                        className="text-option"
-                        onClick={() => console.log('Text feature coming soon')}
+                        className="draggable text-option"
+                        onClick={() => handleShapeAdd('text')}
                         aria-label="Add Text"
                     >
                         <h3>Text</h3>
@@ -113,7 +142,7 @@ const MindMapPage: React.FC = () => {
                 </aside>
 
                 <div className="graph-space">
-                    <div ref={graphContainerRef} id="modelCanvas" />
+                    <div ref={graphContainerRef} id="modelCanvas"/>
                 </div>
             </main>
         </div>
