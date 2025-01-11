@@ -10,23 +10,26 @@
     padding: 2vh;
 }
 
-.tool-box div {
+.tool-box button {
     margin: 2vh;
     justify-content: center;
-    display: flex;
+    display: grid;
 }
 .circle-option{
+    display: block;
     border-radius: 50%;
     width: 60px;
     height: 60px;
     border: 2px solid var(--primary);
 }
 .rectangle-option{
+    display: block;
     height: 60px;
     width: 60px;
     border: 2px solid var(--primary);
 }
 .eclipse-option{
+    display: block;
     border-radius: 55%;
     height:30px;
     width: 60px;
@@ -44,6 +47,7 @@
     margin: auto;
 }
 .triangle-option{
+    display: block;
     width: 0;
     height: 0;
     border-left: 40px solid transparent;
@@ -56,14 +60,17 @@
 
 }
 .image-option{
+    display: block;
     border: 2px solid var(--primary);
 }
 .simple-link{
+    display: block;
     height: 0;
     width: 60px;
     border: 2px solid var(--primary);
 }
 .double-link{
+    display: block;
     width:60px;
     height: 7px;
     border-left-color: transparent;

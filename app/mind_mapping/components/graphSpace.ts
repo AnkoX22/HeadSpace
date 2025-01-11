@@ -1,101 +1,246 @@
-import {dia, elementTools, shapes} from '@joint/core';
+import { dia, elementTools, linkTools, shapes } from 'jointjs';
 
 export class MindMapGraph {
-    private graph: dia.Graph;
-    private paper: dia.Paper;
+    private readonly graph: dia.Graph;
+    private paper: dia.Paper | undefined;
 
-    constructor(container: HTMLElement) {
-        // Initialize graph and paper
+    constructor() {
         this.graph = new dia.Graph();
+    }
+
+    initializePaper(container: HTMLDivElement, width: number, height: number): dia.Paper {
+        if (!container) {
+            throw new Error('Container element is not defined.');
+        }
+
         this.paper = new dia.Paper({
             el: container,
             model: this.graph,
-            width: 800,
-            height: 600,
+            width,
+            height,
             gridSize: 10,
+            drawGrid: true,
+            background: {
+                color: '#F8F9FA'
+            },
+            interactive: {
+                vertexAdd: true,
+                vertexMove: true,
+                vertexRemove: true,
+                arrowheadMove: true
+            }
+        });
+
+        this.setupPaperEvents();
+        return this.paper;
+    }
+
+    private setupPaperEvents(): void {
+        if (!this.paper) return;
+
+        this.paper.on('blank:pointerdown', () => {
+            const elements = this.graph.getElements();
+            elements.forEach(element => {
+                const elementView = element.findView(this.paper!);
+                if (elementView) elementView.hideTools();
+            });
+        });
+
+        this.paper.on('element:pointerclick', (elementView) => {
+            const elements = this.graph.getElements();
+            elements.forEach(element => {
+                const view = element.findView(this.paper!);
+                if (view && view !== elementView) view.hideTools();
+            });
         });
     }
 
-    // Add a circle
-    addCircle(label: string, position: {x:number; y: number}){
-        const circle = new shapes.standard.Circle();
-        circle.position(position.x, position.y);
-        circle.resize(100, 40);
-        circle.attr({
-            body: {fill: 'white'},
-            label: {text: label, fill: 'black'},
+    addCircle(x: number, y: number, width: number, height: number, label: string, paper: dia.Paper) {
+        const circle = new shapes.standard.Circle({
+            position: { x, y },
+            size: { width, height },
+            attrs: {
+                body: {
+                    fill: 'white',
+                    stroke: '#2C3E50',
+                    strokeWidth: 2
+                },
+                label: {
+                    text: label,
+                    fill: '#2C3E50',
+                    fontSize: 14,
+                    fontFamily: 'Arial, sans-serif'
+                }
+            }
         });
         circle.addTo(this.graph);
+        this.addTools(paper, circle);
+        return circle;
     }
 
-    // Add a triangle
-    addTriangle(label: string, position: {x:number, y: number}){
-        const polygon = new shapes.standard.Polygon();
-        polygon.resize(100, 40);
-        polygon.position(position.x, position.y);
-        polygon.attr({
-            body: {fill: 'white'},
-            label: {text: label, fill: 'black'},
-        });
-        polygon.addTo(this.graph);
-    }
-
-
-    // Add a node to the graph
-    addNode(label: string, position: { x: number; y: number }) {
-        const rect = new shapes.standard.Rectangle();
-        rect.position(position.x, position.y);
-        rect.resize(100, 40);
-        rect.attr({
-            body: { fill: 'blue' },
-            label: { text: label, fill: 'white' },
+    addRectangle(x: number, y: number, width: number, height: number, label: string, paper: dia.Paper) {
+        const rect = new shapes.standard.Rectangle({
+            position: { x, y },
+            size: { width, height },
+            attrs: {
+                body: {
+                    fill: 'white',
+                    stroke: '#2C3E50',
+                    strokeWidth: 2,
+                    rx: 5,
+                    ry: 5
+                },
+                label: {
+                    text: label,
+                    fill: '#2C3E50',
+                    fontSize: 14,
+                    fontFamily: 'Arial, sans-serif'
+                }
+            }
         });
         rect.addTo(this.graph);
+        this.addTools(paper, rect);
+        return rect;
     }
 
-    // Add a link between nodes
-    addLink(sourceId: string, targetId: string) {
-        const link = new shapes.standard.Link();
-        link.source({ id: sourceId });
-        link.target({ id: targetId });
+    addTriangle(x: number, y: number, width: number, height: number, label: string, paper: dia.Paper) {
+        const triangle = new shapes.standard.Polygon({
+            position: { x, y },
+            size: { width, height },
+            attrs: {
+                body: {
+                    fill: 'white',
+                    stroke: '#2C3E50',
+                    strokeWidth: 2,
+                    points: '0,100 50,0 100,100'
+                },
+                label: {
+                    text: label,
+                    fill: '#2C3E50',
+                    fontSize: 14,
+                    fontFamily: 'Arial, sans-serif',
+                    refY: '80%'
+                }
+            }
+        });
+        triangle.addTo(this.graph);
+        this.addTools(paper, triangle);
+        return triangle;
+    }
+
+    addLink(source: dia.Element, target: dia.Element, paper: dia.Paper) {
+        const link = new shapes.standard.Link({
+            source: { id: source.id },
+            target: { id: target.id },
+            attrs: {
+                line: {
+                    stroke: '#2C3E50',
+                    strokeWidth: 2,
+                    targetMarker: {
+                        type: 'path',
+                        d: 'M 10 -5 0 0 10 5 Z'
+                    }
+                }
+            },
+            router: { name: 'manhattan' },
+            connector: { name: 'rounded' }
+        });
         link.addTo(this.graph);
+        this.addLinkTools(paper, link);
+        return link;
     }
 
-    // Add link between nodes
-    addDoubleLink(sourceId: string, targetId: string){
-        const doubleLink = new shapes.standard.DoubleLink();
-        doubleLink.source({id: sourceId});
-        doubleLink.target({id:targetId});
-        doubleLink.addTo(this.graph);
+    addDoubleLink(source: dia.Element, target: dia.Element, paper: dia.Paper) {
+        const link = new shapes.standard.DoubleLink({
+            source: { id: source.id },
+            target: { id: target.id },
+            attrs: {
+                line: {
+                    stroke: '#2C3E50',
+                    strokeWidth: 2
+                }
+            },
+            router: { name: 'manhattan' },
+            connector: { name: 'rounded' }
+        });
+        link.addTo(this.graph);
+        this.addLinkTools(paper, link);
+        return link;
     }
 
-    // Clear the graph
-    clearGraph() {
-        this.graph.clear();
-    }
-
-    addTools(paper: dia.Paper, element: shapes.standard.Rectangle){
-
-        const removeButton = new elementTools.Remove();
-        const boundaryTool = new elementTools.Boundary();
-        const buttonTool = new elementTools.Button();
-        const hoverTool = new elementTools.HoverConnect();
-        const connectTool = new elementTools.Connect();
-       // const controlTool = new elementTools.Control();
-
+    private addTools(paper: dia.Paper, element: dia.Element) {
         const toolsView = new dia.ToolsView({
             tools: [
-                removeButton,
-                boundaryTool,
-                hoverTool,
-                connectTool,
-                buttonTool
-               // controlTool
+                new elementTools.Remove({
+                    offset: { x: 0, y: 0 },
+                    action: () => {
+                        element.remove();
+                    }
+                }),
+                new elementTools.Boundary({
+                    padding: 5,
+                    attributes: {
+                        fill: 'none',
+                        stroke: '#2C3E50',
+                        'stroke-width': 1,
+                        'stroke-dasharray': '5,5'
+                    }
+                }),
+                new elementTools.Connect({
+                    targetAttribute: 'class'
+                }),
             ]
         });
 
         const elementView = element.findView(paper);
-        elementView.addTools(toolsView);
+        if (elementView) {
+            elementView.addTools(toolsView);
+            elementView.hideTools();
+        }
+    }
 
+    private addLinkTools(paper: dia.Paper, link: dia.Link) {
+        const toolsView = new dia.ToolsView({
+            tools: [
+                new linkTools.Vertices(),
+                new linkTools.Segments(),
+                new linkTools.Remove(),
+                new linkTools.SourceArrowhead(),
+                new linkTools.TargetArrowhead(),
+                new linkTools.Boundary({
+                    padding: 5,
+                    attributes: {
+                        fill: 'none',
+                        stroke: '#2C3E50',
+                        'stroke-width': 1,
+                        'stroke-dasharray': '5,5'
+                    }
+                })
+            ]
+        });
+
+        const linkView = link.findView(paper);
+        if (linkView) {
+            linkView.addTools(toolsView);
+            paper.on('link:mouseenter', (linkView) => {
+                linkView.showTools();
+            });
+
+            paper.on('link:mouseleave', (linkView) => {
+                linkView.hideTools();
+            });
+        }
+    }
+
+    clearGraph() {
+        this.graph.clear();
+    }
+
+    getPaper(): dia.Paper | undefined {
+        return this.paper;
+    }
+
+    getGraph(): dia.Graph {
+        return this.graph;
     }
 }
