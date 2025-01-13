@@ -1,11 +1,22 @@
 .footer {
-    background-color: #171717;
-    color: #ffffff;
-  /*  position: absolute; */
+    background-color: #1E2024 !important; /* Override Bootstrap */
+    color: #ffffff !important;
     width: 100%;
     min-height: 30px;
     padding: 20px;
-    display: block;
-    justify-content: center;
-    margin: auto;
+    margin-top: auto; /* Push footer to bottom */
+    z-index: 2000;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer h1 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem; /* Adjust size as needed */
+}
+
+.footer h2 {
+    font-size: 1rem; /* Adjust size as needed */
 }

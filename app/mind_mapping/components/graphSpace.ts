@@ -1,4 +1,5 @@
 import { dia, elementTools, linkTools, shapes } from 'jointjs';
+import 'jointjs/css/layout.css';
 
 export class MindMapGraph {
     private readonly graph: dia.Graph;
@@ -6,7 +7,6 @@ export class MindMapGraph {
 
 
     shapesMap: Record<string, string> = {};
-
 
     constructor() {
         this.graph = new dia.Graph();
@@ -22,11 +22,13 @@ export class MindMapGraph {
             model: this.graph,
             width,
             height,
-            gridSize: 10,
-            drawGrid: true,
-            background: {
+            gridSize: 20,
+            drawGrid: true, // pre-defined pattern with default settings
+            snapLinks: { radius: 20 }, // Snap links to nearby points
+            snapToGrid: true, // Snap elements to the grid
+           /* background: {
                 color: '#F8F9FA'
-            },
+            }, */
             interactive: {
                 vertexAdd: true,
                 vertexMove: true,
@@ -38,6 +40,7 @@ export class MindMapGraph {
         this.setupPaperEvents();
         return this.paper;
     }
+
 
     private setupPaperEvents(): void {
         if (!this.paper) return;
@@ -362,6 +365,10 @@ export class MindMapGraph {
                     offset: {x: 50, y: 50},
                     targetAttribute: 'class'
                 }),
+                new elementTools.HoverConnect({
+                    useModelGeometry: true,
+                   // trackPath: (view) => view.model.attr(['body', 'd'])
+                })
             ]
         });
 

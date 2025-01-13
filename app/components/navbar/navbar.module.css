@@ -1,64 +1,48 @@
+/* navbar.module.css */
 .navBar {
     background-color: var(--primary);
+    width: 100%;
+    padding: 0;
+    margin: 0;
     display: flex;
-    margin-bottom: 1vh;
-    position: relative;
-    width: 100vw;
+}
+
+.navList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+    list-style: none;
+    background-color: var(--primary);
+    border-bottom: 2px solid var(--secondary); /* Replicating Bootstrap's "underline" effect */
+}
+
+.listItem {
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+}
+
+.navLink {
+    color: var(--secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navLink:hover {
     color: var(--secondary);
 }
-.listItem{
-    justify-content: center;
-    padding: 1vh;
-    margin: 1vw;
-}
 
-.secondNav{
-    display: flex;
-    justify-content: space-evenly;
-}
-.components li{
-    justify-content: right;
-    display: grid;
-}
-
-.menu{
-    background-color: var(--primary);
-    color: var(--background);
-    width: 5vw;
-    height: 5vh;
-    display: none;
-    justify-content: flex-start;
-    padding: 0;
-    margin-left: 0;
-}
-
-@media  screen and (max-width: 560px) {
-    .secondNav{
-        display: none;
+@media (max-width: 768px) {
+    .navList {
+        flex-direction: column;
+        align-items: flex-start;
     }
-    .menu{
-        display: block;
-    }
-}
-.menu:active{
-    .secondNav{
-        display: table-column;
-    }
-}
 
-.showmenu{
-    display: block;
-}
-
-.click{
-    padding: 16px;
-    background-color: #ccc;
-    text-decoration: none;
-    border-radius: 10px;
-    font-size: 18px;
-    color: #fff;
-    &:hover{
-        transition:0.3s;
-        background-color: #222;
+    .listItem {
+        width: 100%;
+        padding: 0.5rem;
     }
 }
