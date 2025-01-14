@@ -1,53 +1,8 @@
 
-
-.circle {
-    border-radius: 45%;
-    background: var(--primary);
-    height: 70vh;
-    width: 35vw;
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    margin: auto;
-    color: var(--background);
-    box-shadow: 0 8px 16px rgba(0,0,0, 0.2), 0 6px 20px rgba(0,0,0,0.19);
-}
-
-.timer {
-    min-font-size: 20%;
-    font-family: sans-serif;
-    font-weight: 400;
-    display: flex;
-    font-size: 10vw;
-    justify-content: center;
-    margin: auto;
-    padding: 10px;
-    color: var(--secondary);
-}
-.timer-buttons {
+.text-center{
     display: flex;
     justify-content: center;
     margin: auto;
-    margin-top: 5vh;
-    color: var(--secondary);
-}
-
-.start-button {
-    background-color: var(--primary);
-    border: 1px solid #b65c5c;
-    color: var(--secondary);
-    border-radius: 10%;
-    margin: 3vh;
-    height: 7vh;
-    width: 12vh;
-}
-
-.pause-button {
-    background-color: var(--primary);
-    border: 1px solid #b65c5c;
-    color: var(--secondary);
-    border-radius: 10%;
-    margin: 3vh;
-    height: 7vh;
-    width: 12vh;
+    flex-direction: column;
+    flex-wrap: wrap;
 }

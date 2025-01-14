@@ -5,6 +5,7 @@ import "./mapping.modules.css";
 import { MindMapGraph } from './components/graphSpace';
 import {dia} from "jointjs";
 
+
 let scalingFactor = 1;
 
 const MindMapPage: React.FC = () => {
@@ -35,6 +36,8 @@ const MindMapPage: React.FC = () => {
 
 
         window.addEventListener("resize", handleResize);
+
+
 
         // Add initial shapes and links
         mindMapGraph.addRectangle(50, 50, 100, 50, "Node 1", paper);

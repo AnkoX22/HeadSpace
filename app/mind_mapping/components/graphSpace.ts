@@ -368,7 +368,7 @@ export class MindMapGraph {
                 new elementTools.HoverConnect({
                     useModelGeometry: true,
                    // trackPath: (view) => view.model.attr(['body', 'd'])
-                })
+                }),
             ]
         });
 
@@ -744,10 +744,6 @@ export class MindMapGraph {
         xnorGate.addTo(this.graph);
         this.addTools(paper, xnorGate);
         return xnorGate;
-    }
-
-    getShapes(){
-
     }
 
     clearGraph() {
