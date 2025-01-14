@@ -1,5 +1,6 @@
 'use client'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useRef } from "react";
 import "./mapping.modules.css";
 import { MindMapGraph } from './components/graphSpace';

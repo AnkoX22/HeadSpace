@@ -1,13 +1,11 @@
 import Link from "next/link";
 
 const StudyMethod = ({ title, path, description}:{title: string, path: string, description: string}) => (
-    <div className="card shadow-sm mb-4">
-        <div className="card-body">
-            <h2 className="card-title h4 text-primary mb-3">{title}</h2>
-            <Link href={path} className="text-decoration-none">
-                <p className="card-text text-dark mb-0">{description}</p>
-            </Link>
-        </div>
+    <div className="bg-white rounded-lg shadow-sm mb-4 p-6">
+        <h2 className="text-xl font-semibold mb-2">{title}</h2>
+        <Link href={path} className="text-decoration-none">
+            <p className="text-grey-600 text-dark mb-0">{description}</p>
+        </Link>
     </div>
 );
 
@@ -46,10 +44,10 @@ export default function About() {
     ];
 
     return (
-        <div className="container py-5">
+        <div className="container mx-auto py-5">
             <div className="row justify-content-center">
                 <div className="col-lg-8">
-                    <h1 className="display-4 text-center mb-5">Method Details</h1>
+                    <h1 className="text-xl font-bold mb-4 text-center">Method Details</h1>
 
                     {/* Study Methods */}
                     {methods.map((method, index) => (
@@ -57,20 +55,18 @@ export default function About() {
                     ))}
 
                     {/* About Section */}
-                    <div className="card shadow-sm mb-4">
-                        <div className="card-body">
-                            <h2 className="card-title h3 text-primary mb-4">About HeadSpace</h2>
-                            <div className="card-text">
-                                <p className="mb-4">
-                                    The main goal of HeadSpace is to create a space where the most famous and most well
-                                    working study methods / techniques can coexist. The methods can be tried and implemented
-                                    on their own or in combination with each other to produce the desired results.
-                                </p>
-                                <p className="text-muted">
-                                    This website is created as a project for an introductory course in Web Development, so
-                                    note that mistakes may occur and the support may not be satisfactory.
-                                </p>
-                            </div>
+                    <div className="bg-white rounded-lg shadow-sm mb-4 py-6 px-5">
+                        <h2 className="text-xl font-bold mb-2 mb-4">About HeadSpace</h2>
+                        <div className="text-gray-700 mb-4">
+                            <p className="mb-4">
+                                The main goal of HeadSpace is to create a space where the most famous and most well
+                                working study methods / techniques can coexist. The methods can be tried and implemented
+                                on their own or in combination with each other to produce the desired results.
+                            </p>
+                            <p className="text-muted">
+                                This website is created as a project for an introductory course in Web Development, so
+                                note that mistakes may occur and the support may not be satisfactory.
+                            </p>
                         </div>
                     </div>
                 </div>
