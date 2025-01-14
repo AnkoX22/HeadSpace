@@ -7,6 +7,8 @@ const Clock = () => {
     const [time, setTime] = useState(25 * 60); // 25 minutes in seconds
     const [isActive, setIsActive] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
+    const [isTimer, setIsTimer] = useState(false);
+    const [isCounter, setIsCounter] = useState(false);
 
     useEffect(() => {
 
@@ -14,14 +16,33 @@ const Clock = () => {
 
         if (isActive && !isPaused) {
             interval = setInterval(() => {
-                setTime((prevTime) => {
-                    if (prevTime <= 0) {
-                        clearInterval(interval);
-                        setIsActive(false);
-                        return 0;
-                    }
-                    return prevTime - 1;
-                });
+
+
+               if(isTimer && !isCounter){
+                   setTime((prevTime) => {
+                       if (prevTime <= 0) {
+                           clearInterval(interval);
+                           setIsActive(false);
+                           setIsTimer(false);
+                           return 0;
+                       }
+                       return prevTime - 1;
+                   });
+               }
+               else if(isCounter && !isTimer ){
+
+                   setTime((prevTime) => {
+                       if (isPaused) {
+                           clearInterval(interval);
+                           setIsActive(false);
+                           setIsCounter(false);
+                           return prevTime;
+                       }
+                       return prevTime + 1;
+                   });
+               }
+
+
             }, 1000);
         }
 
@@ -46,12 +67,30 @@ const Clock = () => {
     };
 
     const handleTimer=() =>{
-        setTime(25*60);
-        setIsActive(true);
+        if(!isTimer){
+            setIsTimer(true);
+            setIsActive(true);
+            setIsCounter(false);
+            setIsPaused(false);
+        }
+        else{
+            setIsCounter(false);
+            setIsPaused(false);
+        }
     }
 
     const handleCounter=() =>{
-       setTime(0);
+       if(!isCounter){
+           setTime(0);
+           setIsCounter(true);
+           setIsActive(true);
+           setIsTimer(false);
+           setIsPaused(false);
+       }
+       else{
+           setIsTimer(false);
+           setIsPaused(false);
+       }
     }
 
     const handlePause = () => {
