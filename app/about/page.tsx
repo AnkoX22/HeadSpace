@@ -1,10 +1,12 @@
+import './//styles.module.css';
 import Link from "next/link";
 
+
 const StudyMethod = ({ title, path, description}:{title: string, path: string, description: string}) => (
-    <div className="bg-white rounded-lg shadow-sm mb-4 p-6">
+    <div className="bg-white rounded-lg shadow-sm mb-4 p-6 hover:shadow-md transition-shadow duration-300 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-pink-100 duration-300">
         <h2 className="text-xl font-semibold mb-2">{title}</h2>
         <Link href={path} className="text-decoration-none">
-            <p className="text-grey-600 text-dark mb-0">{description}</p>
+            <p className="text-grey-600 text-dark mb-0 ">{description}</p>
         </Link>
     </div>
 );
@@ -44,10 +46,10 @@ export default function About() {
     ];
 
     return (
-        <div className="container mx-auto py-5">
+        <div className="container mx-auto py-5 bg-gradient-to-r from-gray-50 to-white">
             <div className="row justify-content-center">
                 <div className="col-lg-8">
-                    <h1 className="text-xl font-bold mb-4 text-center">Method Details</h1>
+                    <h1 className="text-xl font-bold mb-4 text-center header animate-bounce">Method Details</h1>
 
                     {/* Study Methods */}
                     {methods.map((method, index) => (
@@ -55,15 +57,15 @@ export default function About() {
                     ))}
 
                     {/* About Section */}
-                    <div className="bg-white rounded-lg shadow-sm mb-4 py-6 px-5">
+                    <div className="bg-white rounded-lg shadow-sm mb-4 py-6 px-5 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-pink-100 duration-300">
                         <h2 className="text-xl font-bold mb-2 mb-4">About HeadSpace</h2>
                         <div className="text-gray-700 mb-4">
-                            <p className="mb-4">
+                            <p className="mb-4 hover:text-blue-500 transition-colors duration-300">
                                 The main goal of HeadSpace is to create a space where the most famous and most well
                                 working study methods / techniques can coexist. The methods can be tried and implemented
                                 on their own or in combination with each other to produce the desired results.
                             </p>
-                            <p className="text-muted">
+                            <p className="text-muted hover:text-blue-500 transition-colors duration-300">
                                 This website is created as a project for an introductory course in Web Development, so
                                 note that mistakes may occur and the support may not be satisfactory.
                             </p>

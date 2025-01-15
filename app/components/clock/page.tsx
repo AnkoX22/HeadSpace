@@ -13,6 +13,7 @@ const Clock = ({style}: ClockProps) => {
     const [isPaused, setIsPaused] = useState(false);
     const [isTimer, setIsTimer] = useState(false);
     const [isCounter, setIsCounter] = useState(false);
+    const[borderColor, setBorderColor] = useState('border-gray-300');
 
     useEffect(() => {
 
@@ -47,6 +48,14 @@ const Clock = ({style}: ClockProps) => {
 
 
             }, 1000);
+
+        }
+
+        if(borderColor != 'border-gray-300'){
+            setBorderColor('border-gray-300');
+        }
+        else if(isTimer && isActive){
+            setBorderColor('border-pink-500')
         }
 
         return () => {
@@ -110,14 +119,14 @@ const Clock = ({style}: ClockProps) => {
             <div className="flex justify-center gap-2 mb-4">
                 <button
                     type="button"
-                    className="px-4 py-2 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 active:bg-blue-100"
+                    className="px-4 py-2 border border-amber-900 text-indigo rounded-lg hover:bg-pink-100 active:bg-blue-100"
                     onClick={handleTimer}
                 >
                     Timer
                 </button>
                 <button
                     type="button"
-                    className="px-4 py-2 border border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 active:bg-blue-100"
+                    className="px-4 py-2 border border-amber-900 text-indigo rounded-lg hover:bg-pink-100 active:bg-blue-100"
                     onClick={handleCounter}
                 >Counter
                 </button>
@@ -126,7 +135,7 @@ const Clock = ({style}: ClockProps) => {
             {/* Clock Circle */}
             <div className="relative inline-block mb-4">
                 <div
-                    className="rounded-full border-4 border-gray-300 flex items-center justify-center"
+                    className={`rounded-full border-4 transition-all ${borderColor} duration-1500 flex items-center justify-center transition-colors`}
                     style={{
                         width: '200px',
                         height: '200px',
@@ -143,21 +152,21 @@ const Clock = ({style}: ClockProps) => {
             <div className="flex justify-center gap-2">
                 {!isActive || isPaused ? (
                     <button
-                        className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+                        className="px-6 py-2 bg-cyan-900 text-white rounded-lg hover:bg-pink-600"
                         onClick={handleStart}
                     >
                         {isPaused ? 'Resume' : 'Start'}
                     </button>
                 ) : (
                     <button
-                        className="px-6 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600"
+                        className="px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-purple-300"
                         onClick={handlePause}
                     >
                         Pause
                     </button>
                 )}
                 <button
-                    className="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600"
+                    className="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-pink-600"
                     onClick={handleReset}
                 >
                     Reset

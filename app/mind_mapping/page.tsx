@@ -236,11 +236,11 @@ const MindMapPage: React.FC = () => {
                             </li>
                         </ul>
                     </div>
-                    <div className={"card-body"}>
+                    <div className={"card-body  col-sm-3 col-md-3 col-lg-3 mb-3"}>
                         <div ref={graphContainerRef} id="modelCanvas"/>
-                        <aside className="overflow-y-scroll tool-box">
-                            <h1 className={"title"}>Tool Box</h1>
-                            <div className={"tools simple-tools mb-3"}>
+                        <aside className="overflow-y-scroll tool-box ">
+                            <h1 className={"title "}>Tool Box</h1>
+                            <div className={"tools simple-tools"}>
                                 <h1 className={"sub-tool"}>Simple Shapes</h1>
                                 <div className={"d-flex flex-wrap gap-2"}>
                                     <button
