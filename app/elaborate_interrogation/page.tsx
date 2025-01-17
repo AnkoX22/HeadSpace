@@ -148,7 +148,7 @@ const ElaborateInterrogation = () => {
                             <div className="bg-white shadow-sm rounded-lg h-full p-6">
                                 <h5 className="font-bold mb-4">History Log</h5>
                                 <textarea
-                                    className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 h-64 md:h-auto"
+                                    className="w-full p-2 border h-5/6 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     value={historyLog}
                                     readOnly
                                     placeholder="History log will appear here..."

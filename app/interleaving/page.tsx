@@ -4,7 +4,7 @@ import Clock from "@/app/components/clock/page";
 import React from "react";
 
 export default function Interleaving() {
-    let counter: number = 3;
+    let counter: number = 4;
 
     const createTextArea = () => {
         const addTextAreaElement = document.getElementById("add-text-area");

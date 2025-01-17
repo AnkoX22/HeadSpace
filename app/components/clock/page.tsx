@@ -51,12 +51,10 @@ const Clock = ({style}: ClockProps) => {
 
         }
 
-        if(borderColor != 'border-gray-300'){
+        if(!isTimer && !isCounter){
             setBorderColor('border-gray-300');
         }
-        else if(isTimer && isActive){
-            setBorderColor('border-pink-500')
-        }
+
 
         return () => {
             if (interval) clearInterval(interval);
@@ -84,6 +82,7 @@ const Clock = ({style}: ClockProps) => {
             setIsActive(true);
             setIsCounter(false);
             setIsPaused(false);
+            setBorderColor('border-pink-500');
         } else {
             setIsCounter(false);
             setIsPaused(false);
@@ -97,6 +96,7 @@ const Clock = ({style}: ClockProps) => {
             setIsActive(true);
             setIsTimer(false);
             setIsPaused(false);
+            setBorderColor('border-purple-500');
         } else {
             setIsTimer(false);
             setIsPaused(false);
