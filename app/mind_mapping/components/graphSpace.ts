@@ -37,6 +37,14 @@ export class MindMapGraph {
             }
         });
 
+        this.paper.options.defaultAnchor = {
+            name: 'midSide',
+            args:{
+                rotate: true,
+                padding:0
+            }
+        }
+
         this.setupPaperEvents();
         return this.paper;
     }
@@ -367,7 +375,7 @@ export class MindMapGraph {
                 }),
                 new elementTools.HoverConnect({
                     useModelGeometry: true,
-                   // trackPath: (view) => view.model.attr(['body', 'd'])
+                    rotate: true,
                 }),
             ]
         });

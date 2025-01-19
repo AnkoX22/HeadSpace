@@ -3,10 +3,10 @@ import Link from "next/link";
 
 
 const StudyMethod = ({ title, path, description}:{title: string, path: string, description: string}) => (
-    <div className="bg-white rounded-lg shadow-sm mb-4 p-6 hover:shadow-md transition-shadow duration-300 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-pink-100 duration-300">
-        <h2 className="text-xl font-semibold mb-2">{title}</h2>
+    <div className="bg-white rounded-lg shadow-sm mb-4 p-6 hover:shadow-md transition-shadow duration-300 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-103 hover:bg-pink-100 duration-300">
+        <h2 className="text-xl font-semibold mb-2 hover:text-blue-600">{title}</h2>
         <Link href={path} className="text-decoration-none">
-            <p className="text-grey-600 text-dark mb-0 ">{description}</p>
+            <p className="text-grey-600 text-dark mb-0 hover:text-pink-500 ">{description}</p>
         </Link>
     </div>
 );
@@ -57,8 +57,8 @@ export default function About() {
                     ))}
 
                     {/* About Section */}
-                    <div className="bg-white rounded-lg shadow-sm mb-4 py-6 px-5 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-pink-100 duration-300">
-                        <h2 className="text-xl font-bold mb-2 mb-4">About HeadSpace</h2>
+                    <div className="bg-white rounded-lg shadow-sm mb-4 py-6 px-5 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-103 hover:bg-pink-100 duration-300">
+                        <h2 className="text-xl font-bold mb-2 mb-4 hover:text-blue-600">About HeadSpace</h2>
                         <div className="text-gray-700 mb-4">
                             <p className="mb-4 hover:text-pink-500 transition-colors duration-300">
                                 The main goal of HeadSpace is to create a space where the most famous and most well

@@ -7,6 +7,7 @@ import { MindMapGraph } from './components/graphSpace';
 import {dia} from "jointjs";
 
 
+
 let scalingFactor = 1;
 
 const MindMapPage: React.FC = () => {
@@ -47,6 +48,7 @@ const MindMapPage: React.FC = () => {
         mindMapGraph.addTriangle(200, 250, 100, 50, "Triangle 1", paper);
 
 
+
         return () => {
             window.removeEventListener("resize", handleResize);
         };
@@ -83,19 +85,19 @@ const MindMapPage: React.FC = () => {
 
         switch (shapeType) {
             case 'rectangle':
-                mindMapGraph.addRectangle(centerX, centerY, 100, 50, "New Rectangle", paper);
+                mindMapGraph.addRectangle(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'circle':
-                mindMapGraph.addCircle(centerX, centerY, 100, 50, "New Circle", paper);
+                mindMapGraph.addCircle(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'triangle':
-                mindMapGraph.addTriangle(centerX, centerY, 100, 50, "New Triangle", paper);
+                mindMapGraph.addTriangle(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'ellipse':
-                mindMapGraph.addEllipse(centerX, centerY, 100, 50, "New Ellipse", paper);
+                mindMapGraph.addEllipse(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'cylinder':
-                mindMapGraph.addCylinder(centerX, centerY, 100, 50, "New Cylinder", paper);
+                mindMapGraph.addCylinder(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'text':
                 mindMapGraph.addText(centerX, centerY, 50, 50);
@@ -104,127 +106,127 @@ const MindMapPage: React.FC = () => {
                 mindMapGraph.addImage(centerX, centerY, 100, 50);
                 break;
             case 'link':
-                mindMapGraph.addLink(centerX, centerY, 100, 50, "Link", paper);
+                mindMapGraph.addLink(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'double link':
-                mindMapGraph.addDoubleLink(centerX, centerY, 100, 50, "Double Link", paper);
+                mindMapGraph.addDoubleLink(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'and':
-                mindMapGraph.addAndGate(centerX, centerY, 100, 50, "And Gate", paper);
+                mindMapGraph.addAndGate(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'or':
-                mindMapGraph.addOrGate(centerX, centerY, 100, 50, "Or Gate", paper);
+                mindMapGraph.addOrGate(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'not':
-                mindMapGraph.addNotGate(centerX, centerY, 100, 50, "Not Gate", paper);
+                mindMapGraph.addNotGate(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'nor':
-                mindMapGraph.addNorGate(centerX, centerY, 100, 50, "Nor Gate", paper);
+                mindMapGraph.addNorGate(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'nand':
-                mindMapGraph.addNandGate(centerX, centerY, 100, 50, "Nand Gate", paper);
+                mindMapGraph.addNandGate(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'xor':
-                mindMapGraph.addXorGate(centerX, centerY, 100, 50, "Xor Gate", paper);
+                mindMapGraph.addXorGate(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'xnor':
-                mindMapGraph.addXnorGate(centerX, centerY, 100, 50, "Xnor Gate", paper);
+                mindMapGraph.addXnorGate(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'gate11':
-                mindMapGraph.addGate11(centerX, centerY, 100, 50, "Gate 11", paper);
+                mindMapGraph.addGate11(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'gate21':
-                mindMapGraph.addGate21(centerX, centerY, 100, 50, "Gate 21", paper);
+                mindMapGraph.addGate21(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'input':
-                mindMapGraph.addInput(centerX, centerY, 100, 50, "Input Gate", paper);
+                mindMapGraph.addInput(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'output':
-                mindMapGraph.addOutput(centerX, centerY, 100, 50, "Output Gate", paper);
+                mindMapGraph.addOutput(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'io':
-                mindMapGraph.addIO(centerX, centerY, 100, 50, "IO Gate", paper);
+                mindMapGraph.addIO(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'repeater':
-                mindMapGraph.addRepeater(centerX, centerY, 100, 50, "Repeater", paper);
+                mindMapGraph.addRepeater(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'wire':
-                mindMapGraph.addWire(centerX, centerY, 100, 50, "Wire", paper);
+                mindMapGraph.addWire(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'entity':
-                mindMapGraph.addEntity(centerX, centerY, 100, 50, "Entity", paper);
+                mindMapGraph.addEntity(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'weak entity':
-                mindMapGraph.addWeakEntity(centerX, centerY, 100, 50, "Weak Entity", paper);
+                mindMapGraph.addWeakEntity(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'abstract':
-                mindMapGraph.addAbstract(centerX, centerY, 100, 50, "Abstract", paper);
+                mindMapGraph.addAbstract(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'attribute':
-                mindMapGraph.addAttribute(centerX, centerY, 100, 50, "Attribute", paper);
+                mindMapGraph.addAttribute(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'isa':
-                mindMapGraph.addIsA(centerX, centerY, 100, 50, "ISA", paper);
+                mindMapGraph.addIsA(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'identifying':
-                mindMapGraph.addIdentifyingRelationship(centerX, centerY, 100, 50, "Identifying Relationship", paper);
+                mindMapGraph.addIdentifyingRelationship(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'class':
-                mindMapGraph.addClass(centerX, centerY, 100, 50, "Class", paper);
+                mindMapGraph.addClass(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'key':
-                mindMapGraph.addKey(centerX, centerY, 100, 50, "Key", paper);
+                mindMapGraph.addKey(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'derived':
-                mindMapGraph.addDerived(centerX, centerY, 100, 50, "Derived", paper);
+                mindMapGraph.addDerived(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'multivalued':
-                mindMapGraph.addMultivalued(centerX, centerY, 100, 50, "Multivalued", paper);
+                mindMapGraph.addMultivalued(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'relationship':
-                mindMapGraph.addRelationship(centerX, centerY, 100, 50, "Relationship", paper);
+                mindMapGraph.addRelationship(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'state':
-                mindMapGraph.addState(centerX, centerY, 100, 50, "State", paper);
+                mindMapGraph.addState(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'normal':
-                mindMapGraph.addNormal(centerX, centerY, 100, 50, "Normal", paper);
+                mindMapGraph.addNormal(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'star state':
-                mindMapGraph.addStarState(centerX, centerY, 100, 50, "Star State", paper);
+                mindMapGraph.addStarState(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'end state':
-                mindMapGraph.addEndState(centerX, centerY, 100, 50, "End State", paper);
+                mindMapGraph.addEndState(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'transition':
-                mindMapGraph.addTransition(centerX, centerY, 100, 50, "State", paper);
+                mindMapGraph.addTransition(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'interface':
-                mindMapGraph.addInterface(centerX, centerY, 100, 50, "Interface", paper);
+                mindMapGraph.addInterface(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'aggregation':
-                mindMapGraph.addAggregation(centerX, centerY, 100, 50, "Aggregation", paper);
+                mindMapGraph.addAggregation(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'composition':
-                mindMapGraph.addComposition(centerX, centerY, 100, 50, "Composition", paper);
+                mindMapGraph.addComposition(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'association':
-                mindMapGraph.addAssociation(centerX, centerY, 100, 50, "Association", paper);
+                mindMapGraph.addAssociation(centerX, centerY, 100, 50, "", paper);
                 break;
             case 'generalization':
-                mindMapGraph.addGeneralization(centerX, centerY, 100, 50, "Generalization", paper);
+                mindMapGraph.addGeneralization(centerX, centerY, 100, 50, "", paper);
                 break;
             // Add more shape types as needed
         }
     };
 
     return (
-        <div className="container-fluid mind-map-container">
+        <main className="container-fluid mind-map-container">
             <header className="row mb-3 method-label">
                 <h1 className="col method-label session-name">Session Name</h1>
                 <h2 className="technique-name">Technique: Mind Mapping</h2>
             </header>
-            <main className="row main-space">
+            <div className="row main-space">
                 <div className="graph-space card">
                     <div className="card-header">
                         <ul className={"nav nav-tabs card-header-tabs"}>
@@ -248,12 +250,17 @@ const MindMapPage: React.FC = () => {
                                         onClick={() => handleShapeAdd('circle')}
                                         aria-label="Add Circle"
 
-                                    />
+                                    ></button>
                                     <button
                                         className="draggable rectangle-option"
                                         onClick={() => handleShapeAdd('rectangle')}
                                         aria-label="Add Rectangle"
-                                    />
+                                    >
+                                        <svg width="50" height="50" viewBox="0 0 24 24" aria-hidden="true">
+                                            <rect x="4" y="4" width="50" height="50" fill="white" stroke="black"
+                                                  strokeWidth="2"/>
+                                        </svg>
+                                    </button>
                                     <button
                                         className="draggable triangle-option"
                                         onClick={() => handleShapeAdd('triangle')}
@@ -507,8 +514,8 @@ const MindMapPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
-            </main>
-        </div>
+            </div>
+        </main>
     );
 };
 

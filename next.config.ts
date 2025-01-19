@@ -7,6 +7,13 @@ const nextConfig: NextConfig = {
         if (!isServer && dev) {
             config.devtool = 'source-map'
         }
+
+        // Add support for importing SVGs as React components
+        config.module.rules.push({
+            test: /\.svg$/,
+            use: ['@svgr/webpack'],
+        });
+
         return config
     }
 }

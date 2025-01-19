@@ -2,22 +2,21 @@
 
 import Clock from "@/app/components/clock/page";
 import React from "react";
+import {useState} from "react";
 
 export default function Interleaving() {
+
+    const [customTopic, setCustomTopic] = useState([]);
+
     let counter: number = 4;
 
     const createTextArea = () => {
-        const addTextAreaElement = document.getElementById("add-text-area");
-        if (addTextAreaElement) {
-            addTextAreaElement.innerHTML = `<textarea class="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" cols="20" rows="3" placeholder="Topic ${counter}"></textarea>`;
-            counter++;
-        } else {
-            console.error("Element by that id not found!");
-        }
+
+        setCustomTopic((prevTopics) => [...prevTopics, prevTopics.length + counter]);
     };
 
     return (
-        <div className="container mx-auto py-5 px-4">
+        <main className="container mx-auto py-5 px-4">
             {/* Header */}
             <header className="mb-6">
                 <h1 className="text-2xl font-bold mb-2">Session Name</h1>
@@ -41,6 +40,15 @@ export default function Interleaving() {
                                 className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 placeholder="Topic 3"
                             ></textarea>
+                            {
+                                customTopic.map( (counter) => (
+                                    <textarea key = {counter}
+                                        className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        placeholder={`Topic ${counter}`}
+                                    ></textarea>
+                                ))
+                            }
+
                             <div id="add-text-area"></div>
                         </div>
                         <button
@@ -74,6 +82,6 @@ export default function Interleaving() {
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     );
 }

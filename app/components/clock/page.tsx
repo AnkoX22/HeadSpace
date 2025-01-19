@@ -45,14 +45,13 @@ const Clock = ({style}: ClockProps) => {
                         return prevTime + 1;
                     });
                 }
+                else if( !isActive && !isPaused){
+                    setBorderColor('border-gray-300');
+                }
 
 
             }, 1000);
 
-        }
-
-        if(!isTimer && !isCounter){
-            setBorderColor('border-gray-300');
         }
 
 
@@ -111,6 +110,7 @@ const Clock = ({style}: ClockProps) => {
         setTime(25 * 60);
         setIsActive(false);
         setIsPaused(false);
+        setBorderColor('border-gray-300');
     };
 
     return (
