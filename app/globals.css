@@ -33,6 +33,10 @@ body {
   overflow-x: hidden;
 }
 
+#session-name{
+  resize: none;
+  background-color: var(--background);
+}
 
 .method-label{
   display: block;

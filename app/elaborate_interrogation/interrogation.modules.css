@@ -9,6 +9,9 @@
     justify-content: left;
 }
 
+#topic {
+    resize: none;
+}
 .questions-section{
     display: grid;
     justify-content: left;

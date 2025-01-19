@@ -1,0 +1,63 @@
+.tool-box {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background-color: var(--background);
+    border-radius: 13%;
+    border: 3px solid  #005F5F;
+    width: 250px;
+    padding: 1rem;
+    color: #1E2024;
+    overflow-x: auto;
+    max-height: calc(100% - 40px);
+    max-width: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.sub-tool{
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    border-top: 1px solid var(--secondary);
+    color: #1E2024;
+}
+
+.tool-box button {
+    margin: 1vh;
+    justify-content: center;
+    display: flex;
+    border: 1px solid #000000;
+    height: 40px;
+    width: 40px;
+}
+
+.tool-box h1 {
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+.draggable {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid #dee2e6;
+    background: white;
+    cursor: pointer;
+
+}
+@media (max-width: 768px ) {
+    .tool-box{
+        width: calc(100% - 2vh);
+        height: auto;
+        max-height: 300px;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+}
+.title:hover {
+    cursor: grab;
+}
+
+.title:active {
+    cursor: grabbing;
+}

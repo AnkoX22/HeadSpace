@@ -19,7 +19,11 @@ export default function Interleaving() {
         <main className="container mx-auto py-5 px-4">
             {/* Header */}
             <header className="mb-6">
-                <h1 className="text-2xl font-bold mb-2">Session Name</h1>
+                <textarea
+                    placeholder={"Session Name"}
+                    className="text-2xl font-bold mb-2 text-center text-gray-600  placeholder-glow"
+                    id={"session-name"}
+                />
                 <h2 className="text-lg text-gray-600">Technique: Interleaving</h2>
             </header>
 
@@ -27,7 +31,7 @@ export default function Interleaving() {
                 {/* Left Section */}
                 <div className="w-full md:w-6/12">
                     <div className="bg-white shadow-sm rounded-lg p-6">
-                        <div className="flex flex-col gap-4 mb-4">
+                    <div className="flex flex-col gap-4 mb-4">
               <textarea
                   className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="Topic 1"

@@ -4,7 +4,11 @@ export default function Practice_Testing() {
     return (
         <main>
             <div className={"method-label"}>
-                <h1 className={"session-name"}>Session Name</h1>
+                <textarea
+                    placeholder={"Session Name"}
+                    className="text-2xl font-bold mb-2 text-center text-gray-600  placeholder-glow"
+                    id={"session-name"}
+                />
                 <br/>
                 <h2 className={"technique-name"}>Technique: Practice Testing</h2>
             </div>

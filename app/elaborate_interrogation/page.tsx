@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import "./interrogation.modules.css";
 
 const ElaborateInterrogation = () => {
     const [sessionName, setSessionName] = useState('Session Name');
@@ -86,13 +87,13 @@ const ElaborateInterrogation = () => {
 
     document.addEventListener("DOMContentLoaded", () => {
         const sessionHeading = document.querySelector<HTMLHeadingElement>('#session-name');
-        if (sessionHeading) {
-            console.log("Event listener attached");
-            sessionHeading.addEventListener("click", () => {
-                console.log("Session heading clicked!");
-            });
-        } else {
-            console.log('No session name found!');
+
+        if(sessionHeading != null){
+            handleSessionNameChange();
+            console.log("H1 found??");
+        }
+        else{
+            console.log('No h1 found!!!11');
         }
     });
 
@@ -105,8 +106,12 @@ const ElaborateInterrogation = () => {
                 <div className="w-full lg:w-10/12">
                     {/* Header */}
                     <header className="mb-6">
-                        <h1 className="text-2xl font-bold mb-2" id={'session-name'}>{sessionName}</h1>
-                        <h2 className="text-lg text-gray-600">Technique: Elaborate Interrogation</h2>
+                        <textarea
+                            placeholder={"Session Name"}
+                            className="text-2xl font-bold mb-2 text-center text-gray-600  placeholder-glow"
+                            id={"session-name"}
+                        />
+                        <h2 className="text-lg text-gray-600 placeholder-grey-600">Technique: Elaborate Interrogation</h2>
                     </header>
 
                     <div className="flex flex-col md:flex-row gap-6">
@@ -119,7 +124,7 @@ const ElaborateInterrogation = () => {
                                         <textarea
                                             id={'topic'}
                                             placeholder={"Add topic"}
-                                            className="bg-blue-500 text-white text-center font-bold border-green-500 px-4 py-2 rounded-lg flex items-center">
+                                            className="bg-blue-500 text-white text-center font-bold placeholder-white px-4 py-2 rounded-lg flex items-center">
                                         </textarea>
 
                                     </div>
