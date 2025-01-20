@@ -34,7 +34,11 @@ export class MindMapGraph {
                 vertexMove: true,
                 vertexRemove: true,
                 arrowheadMove: true
-            }
+            },
+            defaultConnectionPoint: { name: 'boundary' },
+            validateConnection: function(sourceView, sourceMagnet, targetView, targetMagnet) {
+                return sourceMagnet !== targetMagnet;
+            },
         });
 
         this.paper.options.defaultAnchor = {

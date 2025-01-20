@@ -1,7 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {MindMapGraph} from "@/app/mind_mapping/components/graphSpace";
-import {dia} from "jointjs";
+import {dia, shapes} from "jointjs";
 import "./toolbar.modules.css";
+import { shapesSVG } from './shapes';
 import React, { useEffect, useRef, useState } from "react";
 
 interface ToolBarProps {
@@ -12,7 +13,7 @@ interface ToolBarProps {
 export default function ToolBar({ mindGraphMapRef, paperRef }: ToolBarProps) {
 
 
-    const handleShapeAdd = (shapeType: string) => {
+    const handleShapeAdd = (shapeName: string) => {
         if (!mindGraphMapRef.current || !paperRef.current) {
             console.error("MindMapGraph or Paper is not initialized!");
             return;
@@ -23,7 +24,7 @@ export default function ToolBar({ mindGraphMapRef, paperRef }: ToolBarProps) {
         const centerX = window.innerWidth * 0.5;
         const centerY = window.innerHeight * 0.5;
 
-        switch (shapeType) {
+        switch (shapeName) {
             case 'rectangle':
                 mindMapGraph.addRectangle(centerX, centerY, 100, 50, "", paper);
                 break;
