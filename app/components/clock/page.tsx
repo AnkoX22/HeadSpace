@@ -114,7 +114,7 @@ const Clock = ({style}: ClockProps) => {
     };
 
     return (
-        <div className="text-center">
+        <div className="text-center ">
             {/* Timer/Counter Toggle Buttons */}
             <div className="flex justify-center gap-2 mb-4">
                 <button
@@ -152,21 +152,21 @@ const Clock = ({style}: ClockProps) => {
             <div className="flex justify-center gap-2">
                 {!isActive || isPaused ? (
                     <button
-                        className="px-6 py-2 bg-cyan-900 text-white rounded-lg hover:bg-pink-600"
+                        className="bg-teal-500 pb-2 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded mt-auto transition duration-300 focus:border-teal-400"
                         onClick={handleStart}
                     >
                         {isPaused ? 'Resume' : 'Start'}
                     </button>
                 ) : (
                     <button
-                        className="px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-purple-300"
+                        className="bg-teal-500 pb-2 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded mt-auto transition duration-300 focus:border-teal-400"
                         onClick={handlePause}
                     >
                         Pause
                     </button>
                 )}
                 <button
-                    className="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-pink-600"
+                    className="bg-teal-500 pb-2 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded mt-auto transition duration-300 focus:border-teal-400"
                     onClick={handleReset}
                 >
                     Reset

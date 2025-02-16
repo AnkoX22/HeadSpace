@@ -6,21 +6,9 @@ import GraphIcon from "../../public/graph-about.svg";
 import QuestionIcon from "../../public/question-about.svg";
 import CheckIcon from "../../public/check-about.svg";
 import ReviewIcon from "../../public/review-about.svg";
-import {Icon} from "next/dist/lib/metadata/types/metadata-types";
-import React, {FC} from 'react';
+import React from 'react';
 
-const StudyMethod = ({ title, path, description, icon}:{title: string, path: string, description: string, icon: Icon }) => (
-    <div
-        className="bg-white rounded-xl p-8 border border-gray-200 mb-8  shadow-md hover:shadow-lg transition duration-200 hover:translate-y-[-3px] mt-8 flex flex-col ease-in-out delay-150 hover:bg-white hover:border-gray-300 hover:scale-110">
-        <div className="flex items-center mb-4">
-           <Icon/>
-            <h2 className=" font-montserrat text-2xl text-gray-800 font-semibold mb-2font-bold mb-4">{title}</h2>
-        </div>
-        <Link href={path} className="text-decoration-none ">
-            <p className="text-grey-700 leading-relaxed text-dark mb-0 hover:text-teal-500 ">{description}</p>
-        </Link>
-    </div>
-);
+
 
 export default function About() {
     const methods = [
@@ -66,19 +54,35 @@ export default function About() {
         <main className="container mx-auto px-8 py-12 max-w-7xl bg-gradient-to-r from-gray-50 to-white">
             <div className="row justify-content-center">
                 <div className="col-lg-8">
-                    <h1 className="text-3xl font-extrabold mb-4 mt-16 text-center header animate-bounce">Method Details</h1>
+                    <h1 className="text-2xl text-gray-800 font-bold mb-4 mt-16 text-center header">Method
+                        Details</h1>
 
                     {/* Study Methods */}
                     {methods.map((method, index) => (
-                        <StudyMethod key={index} {...method} />
-                    ))}
+                        //<StudyMethod key={index} {...method} />
+                        <div
+                        key ={index}
+                        className="rounded-xl p-8 border mb-8  shadow-md hover:shadow-lg transition duration-200 hover:translate-y-[-3px] mt-8 flex flex-col ease-in-out delay-150 hover:bg-white hover:border-gray-300 hover:scale-110">
+                        <div className="flex items-center mb-4">
+                        <method.icon className="text-teal-500 mr-4 h-10 w-10"/>
+                        <h2 className=" font-montserrat text-2xl text-gray-800 font-semibold mb-2font-bold mb-4">{method.title}
+                </h2>
+            </div>
+            <Link href={method.path} className="text-decoration-none ">
+                <p className="text-grey-700 leading-relaxed text-dark mb-0 hover:text-teal-500 ">{method.description}</p>
+            </Link>
+        </div>
+    )
+)}
 
-                    {/* About Section */}
-                    <div className="bg-white rounded-xl p-8 border border-gray-200 mb-8  shadow-md hover:shadow-lg transition duration-200 hover:translate-y-[-3px] mt-8 flex flex-col ease-in-out delay-150 hover:bg-white hover:border-gray-300 hover:scale-110">
-                        <h2 className="font-montserrat font-bold text-2xl text-gray-800 mb-4">About HeadSpace</h2>
-                        <div className="text-gray-700 mb-4">
-                            <p className="mb-4 leading-relaxed hover:text-teal-500 transition-colors duration-300">
-                                The main goal of HeadSpace is to create a space where the most famous and most well
+{/* About Section */
+}
+    <div
+        className="bg-white rounded-xl p-8 border border-gray-200 mb-8  shadow-md hover:shadow-lg transition duration-200 hover:translate-y-[-3px] mt-8 flex flex-col ease-in-out delay-150 hover:bg-white hover:border-gray-300 hover:scale-110">
+        <h2 className="font-montserrat font-bold text-2xl text-gray-800 mb-4">About HeadSpace</h2>
+        <div className="text-gray-700 mb-4">
+            <p className="mb-4 leading-relaxed hover:text-teal-500 transition-colors duration-300">
+                The main goal of HeadSpace is to create a space where the most famous and most well
                                 working study methods / techniques can coexist. The methods can be tried and implemented
                                 on their own or in combination with each other to produce the desired results.
                             </p>

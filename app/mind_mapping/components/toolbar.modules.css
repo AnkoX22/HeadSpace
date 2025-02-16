@@ -29,7 +29,22 @@
     height: 40px;
     width: 40px;
 }
+.arrow {
+    cursor: pointer;
+    justify-content: center;
+    border: 0px;
+    margin: 1vh;
+}
 
+.shrink {
+    overflow-y: hidden;
+    height: 50px;
+}
+.header {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
 .tool-box h1 {
     font-size: large;
     display: flex;

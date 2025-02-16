@@ -96,20 +96,12 @@ const MindMapPage: React.FC = () => {
     return (
         <main className="container-fluid mind-map-container w-full lg:w-10/12">
             <header className="row mb-6 method-label">
-                <textarea
-                    placeholder={"Session Name"}
-                    className="text-2xl font-bold mb-2 text-center text-gray-600"
-                    id={"session-name"}
-                />
-                <h2 className="technique-name">Technique: Mind Mapping</h2>
+                <h2 className="font-montserrat font-bold text-3xl text-gray-800 mt-20 mb-8 border-b-2 border-gray-200 pb-2">Technique: Mind Mapping</h2>
             </header>
             <div className="row main-space">
                 <div className="graph-space card">
                     <div className="card-header">
                         <ul className={"nav nav-tabs card-header-tabs"}>
-                            <li className={"nav-items"}>
-                                <a className={"nav-link active"} aria-current={"true"}>This Diagram</a>
-                            </li>
                             {tabs.map((tab) => (
                                 <li key={tab.id} className="nav-item">
                                     <button

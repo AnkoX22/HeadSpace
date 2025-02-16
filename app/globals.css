@@ -33,6 +33,13 @@ body {
   overflow-x: hidden;
 }
 
+.main {
+  display: grid;
+  place-content: center;
+  justify-content: center;
+  background-image: linear-gradient(to left, white, #F9FAFB);
+}
+
 #session-name{
   resize: none;
   background-color: var(--background);

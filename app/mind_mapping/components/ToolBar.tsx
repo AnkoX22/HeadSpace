@@ -1,9 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {MindMapGraph} from "@/app/mind_mapping/components/graphSpace";
-import {dia, shapes} from "jointjs";
+import {dia} from "jointjs";
 import "./toolbar.modules.css";
-import { shapesSVG } from './shapes';
-import React, { useEffect, useRef, useState } from "react";
+import React, {  useState } from "react";
+import UpArrow from "../../../public/up-arrow-svgrepo-com.svg";
+import DownArrow from "../../../public/down-arrow-5-svgrepo-com.svg";
 
 interface ToolBarProps {
     mindGraphMapRef: React.RefObject<MindMapGraph|null>
@@ -12,6 +13,11 @@ interface ToolBarProps {
 
 export default function ToolBar({ mindGraphMapRef, paperRef }: ToolBarProps) {
 
+    const [isExtended, setIsExtended] = useState(true);
+
+    const extendArrow = document.getElementById("extend-arrow") || null;
+    const shrinkArrow = document.getElementById("shrink-arrow") || null;
+    const toolbar = document.getElementById("toolbar") || null;
 
     const handleShapeAdd = (shapeName: string) => {
         if (!mindGraphMapRef.current || !paperRef.current) {
@@ -161,11 +167,26 @@ export default function ToolBar({ mindGraphMapRef, paperRef }: ToolBarProps) {
         }
     };
 
+    const handleExtend = () =>{
+      setIsExtended(true);
+     // toolbar?.classList.add("extended");
+        toolbar?.classList.remove("shrink");
+    }
 
+    const handleShrink = () => {
+        setIsExtended(false);
+        toolbar?.classList.add("shrink");
+        // toolbar?.classList.remove("extended");
+    }
+    extendArrow?.addEventListener('click', handleExtend);
+    shrinkArrow?.addEventListener('click', handleShrink);
 
     return (
-        <>
-            <h1 className={"title "}>Tool Box</h1>
+        < div id ="toolbar">
+           <div className={"header"}>
+               <h1 className={"title "}>Tool Box </h1>
+               {!isExtended ? <UpArrow width="32" height="32" opacity="0.5" className={"arrow"} id={"extend-arrow"}/> : <DownArrow width="32" height="32" opacity="0.5" className={"arrow"} id={"shrink-arrow"}/>}
+           </div>
             <div className={"tools simple-tools"}>
                 <h1 className={"sub-tool"}>Simple Shapes</h1>
                 <div className={"d-flex flex-wrap gap-2"}>
@@ -180,10 +201,6 @@ export default function ToolBar({ mindGraphMapRef, paperRef }: ToolBarProps) {
                         onClick={() => handleShapeAdd('rectangle')}
                         aria-label="Add Rectangle"
                     >
-                        <svg width="50" height="50" viewBox="0 0 24 24" aria-hidden="true">
-                            <rect x="4" y="4" width="50" height="50" fill="white" stroke="black"
-                                  strokeWidth="2"/>
-                        </svg>
                     </button>
                     <button
                         className="draggable triangle-option"
@@ -410,6 +427,6 @@ export default function ToolBar({ mindGraphMapRef, paperRef }: ToolBarProps) {
                     />
                 </div>
             </div>
-        </>
+        </div>
     );
 }
