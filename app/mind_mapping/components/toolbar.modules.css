@@ -1,4 +1,4 @@
-.tool-box {
+.tool-box .extend {
     position: absolute;
     top: 20px;
     left: 20px;
@@ -32,7 +32,6 @@
 .arrow {
     cursor: pointer;
     justify-content: center;
-    border: 0px;
     margin: 1vh;
 }
 

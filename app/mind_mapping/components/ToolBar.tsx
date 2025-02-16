@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {MindMapGraph} from "@/app/mind_mapping/components/graphSpace";
 import {dia} from "jointjs";
 import "./toolbar.modules.css";
-import React, {  useState } from "react";
+import React, { useRef, useState} from "react";
 import UpArrow from "../../../public/up-arrow-svgrepo-com.svg";
 import DownArrow from "../../../public/down-arrow-5-svgrepo-com.svg";
 
@@ -15,9 +15,11 @@ export default function ToolBar({ mindGraphMapRef, paperRef }: ToolBarProps) {
 
     const [isExtended, setIsExtended] = useState(true);
 
-    const extendArrow = document.getElementById("extend-arrow") || null;
-    const shrinkArrow = document.getElementById("shrink-arrow") || null;
-    const toolbar = document.getElementById("toolbar") || null;
+    const extendArrowRef = useRef<SVGSVGElement>(null);
+    const shrinkArrowRef =  useRef<SVGSVGElement>(null);
+    const toolbarRef =  useRef<HTMLDivElement>(null);
+
+
 
     const handleShapeAdd = (shapeName: string) => {
         if (!mindGraphMapRef.current || !paperRef.current) {
@@ -170,22 +172,22 @@ export default function ToolBar({ mindGraphMapRef, paperRef }: ToolBarProps) {
     const handleExtend = () =>{
       setIsExtended(true);
      // toolbar?.classList.add("extended");
-        toolbar?.classList.remove("shrink");
+        toolbarRef.current?.classList.remove("shrink");
     }
 
     const handleShrink = () => {
         setIsExtended(false);
-        toolbar?.classList.add("shrink");
+        toolbarRef.current?.classList.add("shrink");
         // toolbar?.classList.remove("extended");
     }
-    extendArrow?.addEventListener('click', handleExtend);
-    shrinkArrow?.addEventListener('click', handleShrink);
+    extendArrowRef.current?.addEventListener('click', handleExtend);
+    shrinkArrowRef.current?.addEventListener('click', handleShrink);
 
     return (
-        < div id ="toolbar">
+        < div id ="toolbar" ref={toolbarRef}>
            <div className={"header"}>
                <h1 className={"title "}>Tool Box </h1>
-               {!isExtended ? <UpArrow width="32" height="32" opacity="0.5" className={"arrow"} id={"extend-arrow"}/> : <DownArrow width="32" height="32" opacity="0.5" className={"arrow"} id={"shrink-arrow"}/>}
+               {!isExtended ? <UpArrow width="32" height="32" opacity="0.5" className={"arrow"} ref={extendArrowRef} id={"extend-arrow"}/> : <DownArrow width="32" height="32" opacity="0.5" ref={shrinkArrowRef} className={"arrow"} id={"shrink-arrow"}/>}
            </div>
             <div className={"tools simple-tools"}>
                 <h1 className={"sub-tool"}>Simple Shapes</h1>
